@@ -1,5 +1,7 @@
 ## Handlebars plugin for Wintersmith
-This plugin provides support for using [Handlebars](http://handlebarsjs.com) for [Wintersmith](http://wintersmith.io)
+This plugin provides support for using [Handlebars](http://handlebarsjs.com) for [Wintersmith](http://wintersmith.io).
+
+This plugin was inspired from [wintersmith-hogan](https://github.com/sfrdmn/wintersmith-hogan).
 
 ### How to use
 Either
@@ -14,7 +16,7 @@ Or
 2. Follow steps 2 and 3 above.
 
 #### Partials
-This plugin provides support for the use of [partials in handlebars](https://github.com/wycats/handlebars.js/#partials).
+This plugin provides support for [partials in handlebars](https://github.com/wycats/handlebars.js/#partials).
 
 To start using it, just add a `partials` directory in your template folder and add partial template files in there.
 
@@ -25,6 +27,11 @@ You can also rename this file to any other fancy name you would like. For eg, if
     "partialDir": "bits"
   }
 ```
+
+#### Note
+To use the `locals` variables in the template, instead of writing `{{locals.name}}` like in the jade template, simply just write `{{name}}`. This applies for other variables as well.
+
+See the wiki for a [sample 'locals' context](https://github.com/tnguyen14/wintersmith-handlebars/wiki/Sample-locals-variables) being passed to the compiled handlebars template to see what's available and how to call them.
 
 ### Under development
 This plugin is my first attempt at bringing support for handlebars to wintersmith. It is still very new, experimental and under development (read: there might be bugs).
