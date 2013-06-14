@@ -1,0 +1,46 @@
+{{> header}}
+		<div id="content">
+			<div class="content-wrap">
+				{{author contents.authors page.metadata.author}}
+				{{#each articles}}
+				{{debug this}}
+				<article class="article intro">
+					<header>
+						<p class="date"><span>{{date this.metadata.date}}</span></p>
+						<h2><a href="{{this.url}}">{{this.title}}</a></h2>
+					</header>
+					<section class="content">{{{this.intro}}}
+						{{#if this.hasMore}}
+						<p class="more"><a href="{{this.url}}">more</a></p>
+						{{/if}}
+					</section>
+				</article>
+				{{/each}}
+			</div>
+		</div>
+		<footer>
+			<div class="content-wrap">
+				<div class="nav">
+					{{#if prevPage}}
+					<a href="{{prevPage.url}}"> « Newer
+					{{else}}
+					<a href="/archive.html"> « Archives</a>
+					{{/if}}
+					{{#if nextPage}}
+					<a href="{{nextPage.url}}"> Next page »</a>
+					{{/if}}
+				</div>
+				<section class="about">
+					{{#with contents}}
+						{{{[about.md].html}}}
+					{{/with}}
+
+				</section>
+				<section class="copy">
+					<p>&copy; {{getYear}} {{name}} &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+					</p>
+				</section>
+			</div>
+		</footer>
+	</body>
+</html>
