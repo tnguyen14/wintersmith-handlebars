@@ -14,7 +14,7 @@ module.exports = (env, callback) ->
 
     render: (locals, callback) ->
       try
-        rendered = @tpl(locals)
+        rendered = @tpl locals
         callback null, new Buffer rendered
       catch error
         callback error
@@ -37,10 +37,10 @@ module.exports = (env, callback) ->
       if error then callback error
       else
         try
-          ext = path.extname(filepath.relative)
-          basename = path.basename(filepath.relative, ext)
+          ext = path.extname filepath.relative
+          basename = path.basename filepath.relative, ext
           tpl = handlebars.compile contents.toString()
-          handlebars.registerPartial(basename, tpl)
+          handlebars.registerPartial basename, tpl
           callback null, new HandlebarsPartial tpl
         catch error
           callback error
