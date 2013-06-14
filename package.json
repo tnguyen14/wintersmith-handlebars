@@ -1,0 +1,27 @@
+{
+  "name": "wintersmith-handlebars",
+  "version": "0.0.1",
+  "description": "handlebars plugin for wintersmith",
+  "main": "wintersmith-handlebars.coffee",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tnguyen14/wintersmith-handlebars.git"
+  },
+  "keywords": [
+    "wintersmith",
+    "handlebars",
+    "nodejs",
+    "template",
+    "static",
+    "site"
+  ],
+  "author": "Tri Nguyen",
+  "license": "BSD",
+  "dependencies": {
+    "handlebars": "1.x",
+    "coffee-script": "1.x"
+  },
+  "devDependencies": {
+    "wintersmith": "2.x"
+  }
+}
