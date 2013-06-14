@@ -23,10 +23,28 @@ To start using it, just add a `partials` directory in your template folder and a
 You can also rename this file to any other fancy name you would like. For eg, if you want it to be `bits`, you can simply define that in your `config.json` as follows:
 
 ```json
-  "handlebars": {
-    "partialDir": "bits"
-  }
+"handlebars": {
+  "partialDir": "bits"
+}
 ```
+#### Helpers
+You can add helpers for Handlebars by adding functions in the helper directory. By default, this direcotry is named `helpers`, and is placed under `templates`. You can specify custom name for this folder in `config.json`:
+```json
+"handlebars": {
+  "helperDir": "helpers"
+}
+```
+
+Each helper is its own file. The filename will be registered as the helper name.
+
+An example of a helper function:
+```js
+module.exports = function(stuff) {
+  console.log(stuff);
+    return;
+}
+```
+See `examples` folder for more information.
 
 #### Note
 To use the `locals` variables in the template, instead of writing `{{locals.name}}` like in the jade template, simply just write `{{name}}`. This applies for other variables as well.
