@@ -10,6 +10,7 @@
   "keywords": [
     "wintersmith",
     "handlebars",
+    "wintersmith-plugin",
     "nodejs",
     "template",
     "static",
