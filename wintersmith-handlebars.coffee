@@ -65,8 +65,8 @@ module.exports = (env, callback) ->
 
 
   # Registering the plugins
-  env.registerTemplatePlugin '**/*.*(html)', HandlebarsTemplate
-  env.registerTemplatePlugin "**/#{options.partialDir}/*.*(html)", HandlebarsPartial
+  env.registerTemplatePlugin '**/*.*(html|hbs)', HandlebarsTemplate
+  env.registerTemplatePlugin "**/#{options.partialDir}/*.*(html|hbs)", HandlebarsPartial
   env.registerTemplatePlugin "**/#{options.helperDir}/*.*(js)", HandlebarsHelper
   # return callback
   callback()
