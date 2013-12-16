@@ -31,7 +31,7 @@ module.exports = (env, callback) ->
   HandlebarsTemplate.fromFile = (filepath, callback) ->
     if typeof options.layout == 'string'
       compilepath =
-        full: "#{__dirname}/../templates/#{options.layout}"
+        full: path.join(path.dirname(filepath.full), options.layout)
         relative: options.layout
       layout = true
     else
