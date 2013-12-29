@@ -7,8 +7,8 @@ This plugin was inspired from [wintersmith-hogan](https://github.com/sfrdmn/wint
 Either
 
 1. Download the repo and copy the `wintersmith-handlebars.coffee` file into your `plugins` directory of your `wintersmith` install.
-2. Remember to add `wintersmith-handlebars.coffee` to your `config.json` file as well.
-3. Starting writing handlebars templates in your templates directory as `.html` files
+2. Add `wintersmith-handlebars.coffee` to your `config.json` file.
+3. Starting writing handlebars templates in your templates directory as `.html`, `.hbs` or `.handlebars` files
 
 Or
 
