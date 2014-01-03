@@ -15,6 +15,46 @@ Or
 1. Install it as a node module via `npm install wintersmith-handlebars`
 2. Follow steps 2 and 3 above.
 
+#### Layouts
+You can use layouts in wintermsith-handlebars the same [way you do in hbs](https://github.com/barc/express-hbs#syntax).
+
+Write your layouts as you would normal templates, but make sure they include the variable `{{{body}}}`. (triple-handlebars prevent the HTML from being treated as plain text)
+
+`layout.html`
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Static Site</title>
+  </head>
+  <body>
+    {{{body}}}
+  </body>
+</html>
+```
+
+Then in your templates, add a `{{!< layout.html }}` reference at the top of the file:
+
+`index.html`
+```html
+{{!< layout.html }}
+<p>The index page.</p>
+```
+
+And it will be rendered like so:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Static Site</title>
+  </head>
+  <body>
+    <p>The index page.</p>
+  </body>
+</html>
+```
+
 #### Partials
 This plugin provides support for [partials in handlebars](https://github.com/wycats/handlebars.js/#partials).
 

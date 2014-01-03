@@ -19,7 +19,7 @@
   "author": "Tri Nguyen",
   "license": "BSD",
   "dependencies": {
-    "handlebars": "1.x",
+    "handlebars": "~1.2.1",
     "coffee-script": "1.x"
   },
   "devDependencies": {
