@@ -2,6 +2,9 @@ Handlebars = require 'handlebars'
 path = require 'path'
 fs = require 'fs'
 layoutPattern = /{{!<\s+([A-Za-z0-9\._\-\/]+)\s*}}/
+extend = (obj, mixin) ->
+  obj[name] = method for name, method of mixin
+  obj
 
 module.exports = (env, callback) ->
   # Default partial directory is `partials`, helper directory to `helpers`
@@ -16,36 +19,39 @@ module.exports = (env, callback) ->
 
   # Support for Handlebars templates
   class HandlebarsTemplate extends env.TemplatePlugin
-    constructor: (@tpl, @filepath) ->
+    constructor: (@tpl, @raw, @filepath) ->
     render: (locals, callback) ->
       try
-        rendered = @tpl locals
-        callback null, new Buffer rendered
+        layout = @raw.toString().match(layoutPattern)
+        if layout and layout.length
+          @filepath =
+            full: path.join(path.dirname(@filepath.full), layout[1])
+            relative: layout[1]
+          HandlebarsTemplate.fromFile @filepath, (error, layout, filepath) =>
+            if error then callback error
+            else
+              context = extend locals,
+                body: @raw.toString()
+              layout.render context, (error, contents) =>
+                if error then callback error
+                else
+                  if contents
+                    @tpl = Handlebars.compile contents.toString()
+                    rendered = @tpl locals
+                    callback null, new Buffer rendered
+        else
+          rendered = @tpl locals
+          callback null, new Buffer rendered
       catch error
-        callback error
+      callback error
 
   HandlebarsTemplate.fromFile = (filepath, callback) ->
     fs.readFile filepath.full, (error, contents) ->
       if error then callback error
       else
         try
-          layout = contents.toString().match(layoutPattern)
-          if layout and layout.length
-            filepath =
-              full: path.join(path.dirname(filepath.full), layout[1])
-              relative: layout[1]
-            HandlebarsTemplate.fromFile filepath, (error, layout, filepath) ->
-              if error then callback error
-              else
-                layout.render(body: contents.toString(), (error, contents) ->
-                  if error then callback error
-                  else
-                    tpl = Handlebars.compile contents.toString()
-                    callback null, new HandlebarsTemplate tpl, filepath
-                )
-          else
-            tpl = Handlebars.compile contents.toString()
-            callback null, new HandlebarsTemplate tpl, filepath
+          tpl = Handlebars.compile contents.toString()
+          callback null, new HandlebarsTemplate tpl, contents, filepath
         catch error
           callback error
 
