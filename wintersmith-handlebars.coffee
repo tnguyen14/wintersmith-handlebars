@@ -79,7 +79,7 @@ module.exports = (env, callback) ->
     try
       ext = path.extname filepath.relative
       basename = path.basename filepath.relative, ext
-      fn = require filepath.full
+      fn = env.loadModule filepath.full
       if fn
         Handlebars.registerHelper basename, fn
         callback null, null
@@ -92,6 +92,6 @@ module.exports = (env, callback) ->
   # Registering the plugins
   env.registerTemplatePlugin '**/*.*(html|hbs)', HandlebarsTemplate
   env.registerTemplatePlugin "**/#{options.partialDir}/*.*(html|hbs)", HandlebarsPartial
-  env.registerTemplatePlugin "**/#{options.helperDir}/*.*(js)", HandlebarsHelper
+  env.registerTemplatePlugin "**/#{options.helperDir}/*.*(js|coffee)", HandlebarsHelper
 
   callback() # Return callback
