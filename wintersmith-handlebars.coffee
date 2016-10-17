@@ -43,7 +43,7 @@ module.exports = (env, callback) ->
           rendered = @tpl locals
           callback null, new Buffer rendered
       catch error
-      callback error
+          callback error
 
   HandlebarsTemplate.fromFile = (filepath, callback) ->
     fs.readFile filepath.full, (error, contents) ->
