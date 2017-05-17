@@ -1,4 +1,6 @@
 ## Handlebars plugin for Wintersmith
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/tnguyen14/wintersmith-handlebars.svg)](https://greenkeeper.io/)
 This plugin provides support for using [Handlebars](http://handlebarsjs.com) for [Wintersmith](http://wintersmith.io).
 
 This plugin was inspired from [wintersmith-hogan](https://github.com/sfrdmn/wintersmith-hogan).
