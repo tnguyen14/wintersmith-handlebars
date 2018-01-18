@@ -19,8 +19,8 @@
   "author": "Tri Nguyen",
   "license": "BSD",
   "dependencies": {
-    "handlebars": "~1.2.1",
-    "coffee-script": "1.x"
+    "coffeescript": "^2.1.1",
+    "handlebars": "^4.0.11"
   },
   "devDependencies": {
     "wintersmith": "2.x"
