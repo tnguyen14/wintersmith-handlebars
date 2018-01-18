@@ -1,6 +1,6 @@
 {
   "name": "wintersmith-handlebars",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "handlebars plugin for wintersmith",
   "main": "wintersmith-handlebars.coffee",
   "repository": {
