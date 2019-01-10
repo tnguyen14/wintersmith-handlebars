@@ -23,6 +23,6 @@
     "handlebars": "^4.0.11"
   },
   "devDependencies": {
-    "wintersmith": "2.x"
+    "wintersmith": "^2.5.0"
   }
 }
