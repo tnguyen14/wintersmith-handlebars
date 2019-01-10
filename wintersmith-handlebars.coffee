@@ -24,10 +24,10 @@ module.exports = (env, callback) ->
       try
         layout = @raw.toString().match(layoutPattern)
         if layout and layout.length
-          @filepath =
+          @layoutpath =
             full: path.join(path.dirname(@filepath.full), layout[1])
             relative: layout[1]
-          HandlebarsTemplate.fromFile @filepath, (error, layout, filepath) =>
+          HandlebarsTemplate.fromFile @layoutpath, (error, layout, filepath) =>
             if error then callback error
             else
               context = extend locals,
